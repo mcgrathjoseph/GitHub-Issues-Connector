@@ -1,0 +1,44 @@
+{
+    "debug.onTaskErrors": "abort",
+    "json.schemas": [
+      {
+        "fileMatch": ["/aad.*.json"],
+        "schema": {}
+      }
+    ],
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.postDeployTask": "npm install (functions)",
+    "azureFunctions.projectLanguage": "TypeScript",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectLanguageModel": 4,
+    "azureFunctions.preDeployTask": "npm prune (functions)"
+
+
+
+
+,
+"azureFunctions.stopFuncTaskPostDebug": false,
+    "azureFunctions.showProjectWarning": false,
+    "files.exclude": {
+        "mom1_notExist___________willTheseBelowErrorOnCompileSinceNotExist.png": true,
+        "mom2_notExist_____hmmSampleJoeRestaurantProjectHasForwardSlashAfterPicNameHereButItNotAFolder.png": true,
+        "mom3_notExist.png": true,
+        "Tools_Joe_2_____FolderNotExist/": true,
+        "Tools_Joe_NoAdminRights_NoAzure__FakeAPIviaAzu_____FolderNotExist/": true
+    },
+
+"terminal.integrated.env.windows": {
+  "PATH": "C:\\Dev3\\My Agent__________node-v18.20.8-win-x64;${env:PATH}"
+},
+
+
+
+
+
+
+
+
+
+  }
+  

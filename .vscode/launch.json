@@ -1,0 +1,111 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Node Functions",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "preLaunchTask": "func: host start",
+            "presentation": {
+                "hidden": true,
+                "group": "",
+                "order": 1
+            },
+            "restart": true,
+            "postDebugTask": "Terminate All Tasks"
+        },
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+{
+  "type": "node",
+  "request": "launch",
+  "name": "xxJoe22___Node v22 not v24 — Run current file",
+  "program": "${file}",
+  "runtimeExecutable": "C:\\Dev3\\My Agent____node-v22.22.0-win-x64\\node-v22.22.0-win-x64\\node.exe",
+  "console": "integratedTerminal"
+}
+
+
+
+        
+
+,
+{
+      "type": "node",
+      "request": "launch",
+      "name": "Joe2__Launch Azure Functions (Portable)",
+      "runtimeExecutable": "${workspaceFolder}/Tools_Joe_3/func_Joe_AzureFunctions_NoWorkersPlaceholder/func.exe",
+      "runtimeArgs": [
+        "start",
+        "--script-root",
+        "${workspaceFolder}"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+
+
+,
+  "env": {    
+    "PATH": "C:/Dev3/My Agent__________node-v18.20.8-win-x64/node-v18.20.8-win-x64;${env:PATH}"
+  }
+
+      
+
+
+
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Joe3__Attach to Azure Functions",
+      "port": 9229,
+      "restart": true
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    ],
+    "compounds": [
+        {
+            "name": "Debug Copilot connector",
+            "configurations": ["Attach to Node Functions"],
+            "preLaunchTask": "TTK",
+            "presentation": {
+              "group": "all",
+              "order": 1
+            },
+            "stopAll": true
+        },
+    ],
+}
