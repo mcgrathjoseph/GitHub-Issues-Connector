@@ -1,0 +1,14 @@
+Summary of Key Points:
+- Your sidebar is correct: the correct button is **Zip App Package** under UTILITY.
+- Microsoft renamed the older Build/Prepare action to Zip App Package.
+- This button generates the Teams/Copilot app .zip in appPackage/build/.
+
+Full User Question:
+my sidebar Lifecycle is as per pic, not have Build/Prepare.
+
+Full Reply Context:
+In the current Microsoft 365 Agents Toolkit, the UI label for creating the distributable .zip is **Zip App Package** under the UTILITY section.
+Clicking it produces appPackage/build/appPackage.<env>.zip containing manifest.json, declarativeAgent.json, ai-plugin JSON, OpenAPI YAML, and icons.
+
+References:
+None.

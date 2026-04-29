@@ -1,0 +1,13 @@
+Summary of Key Points:
+- You can hand the ZIP to someone with higher Teams admin rights.
+- They upload it under Teams > Apps > Manage your apps > Upload an app.
+- This sideloads it for testing or they can publish org-wide.
+
+Full User Question:
+What would I do with the zip if I wanted to deploy to someone who had more rights than me?
+
+Full Reply Context:
+Give them appPackage.local.zip. They open the Teams client, go to Apps > Manage your apps > Upload an app > Upload a custom app. This adds your agent for testing. Admins can also publish to the org via Admin Center.
+
+References:
+None.
