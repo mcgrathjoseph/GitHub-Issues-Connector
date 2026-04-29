@@ -1,0 +1,4 @@
+
+(from C: not P: for test)
+
+git clone https://github.com/mcgrathjoseph/GitHub-Issues-Connector.git

@@ -1,0 +1,141 @@
+
+============================================
+AIToJoe Guide – After `npm run build`: Getting the appPackage (.zip)
+============================================
+
+Summary of Key Points
+=====================
+- `npm run build` ONLY compiles TypeScript; it does not create an appPackage.
+- The appPackage folder and .zip are created by the Microsoft 365 Agents Toolkit.
+- The correct next steps are done from the **M365 / Agents Toolkit panel** in VS Code.
+- The order matters: Build (code) → Zip App Package → Validate (optional).
+
+------------------------------------------------------------
+User Question
+------------------------------------------------------------
+"After a successful npm run build, what is the correct order in VS Code to generate the appPackage folder and .zip using the Microsoft 365 Agents Toolkit?"
+
+------------------------------------------------------------
+Important Mental Model (Clear This First)
+------------------------------------------------------------
+
+There are TWO completely different "build" concepts:
+
+1) Code build
+   - Command: `npm run build`
+   - What it does: runs `tsc`
+   - Output: `dist/` JavaScript
+
+2) App package build
+   - Command: Agents Toolkit → Zip App Package
+   - What it does: creates Teams / Copilot app .zip
+   - Output: `appPackage/build/*.zip`
+
+Running (1) is required BEFORE (2), but (1) does NOT trigger (2).
+
+------------------------------------------------------------
+Correct Order AFTER `npm run build`
+------------------------------------------------------------
+
+Assuming:
+- `npm run build` completed with no errors
+- You see fresh timestamps in `dist/`
+
+Do the following:
+
+STEP 1 — Open Microsoft 365 Agents Toolkit panel
+------------------------------------------------
+
+- In VS Code, look at the **left Activity Bar**.
+- Click the **Microsoft 365 / Agents Toolkit (M365 icon)**.
+
+------------------------------------------------------------
+STEP 2 — (Optional but recommended) Validate Application
+------------------------------------------------------------
+
+- In the Toolkit panel, find **Validate Application**.
+- Click it.
+
+What this checks:
+- manifest.json syntax
+- declarativeAgent.json correctness
+- OpenAPI / plugin references
+- icon files
+
+If validation passes, move on.
+
+------------------------------------------------------------
+STEP 3 — Zip App Package (THIS creates appPackage/)
+------------------------------------------------------------
+
+- In the Toolkit panel, under **UTILITY**:
+- Click **Zip App Package**.
+
+What happens next:
+- VS Code creates:
+  - `appPackage/`
+  - `appPackage/build/`
+- A file appears such as:
+  - `appPackage/build/appPackage.local.zip`
+
+This is the .zip you would:
+- Upload to Teams
+- Upload to M365 Admin
+- Use for Copilot testing
+
+------------------------------------------------------------
+STEP 4 — (Optional) Check the appPackage contents
+------------------------------------------------------------
+
+Inside the zip you should see (at root level):
+- manifest.json
+- declarativeAgent.json
+- ai-plugin.json (if present)
+- apiSpecificationFile/ (OpenAPI yaml)
+- icons/
+
+If these are NOT at zip root, the package is invalid.
+
+------------------------------------------------------------
+STEP 5 — What NOT to expect
+------------------------------------------------------------
+
+Important clarifications:
+
+- `npm run build` will NEVER create appPackage/
+- TypeScript success does not imply app package success
+- The Quick Fix you saw earlier is unrelated
+
+------------------------------------------------------------
+Why Your GitHub Connector Sample Looks Different
+------------------------------------------------------------
+
+Compared to older restaurant samples:
+- The connector project may not always surface "Build" under Lifecycle
+- The Utility section is what you want for packaging
+
+This is normal for Graph Connector projects.
+
+------------------------------------------------------------
+Final Checklist (Print This)
+------------------------------------------------------------
+
+1. npm run build   ✅
+2. Agents Toolkit → Validate Application  ✅ (optional)
+3. Agents Toolkit → Zip App Package       ✅ (creates appPackage)
+
+If step 3 ran, you are DONE.
+
+------------------------------------------------------------
+Final Verdict
+------------------------------------------------------------
+
+✅ Your build succeeded.
+✅ You did not miss a step.
+✅ The next action was Zip App Package, not another npm command.
+✅ appPackage is created ONLY by the Toolkit.
+
+References
+==========
+- Microsoft 365 Agents Toolkit documentation
+- Teams / Copilot app packaging model

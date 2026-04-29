@@ -1,0 +1,169 @@
+
+============================================
+AIToJoe Deep Dive – Microsoft 365 Agents Toolkit Flow (VS Code)
+============================================
+
+Summary of Key Points
+=====================
+- This document explains, step by step, how to use the Microsoft 365 Agents Toolkit *inside VS Code*.
+- It assumes you already have a WORKING local Azure Functions project (like the one you built).
+- It explains exactly what to click in VS Code, what commands run, and what gets created in Azure and Microsoft 365.
+- It fills the gap between "the Learn module says run Provision" and "what actually happens on screen."
+
+User Question Addressed
+=======================
+"I'm not sure how to do this in VS Code / what to click for the Microsoft 365 Agents Toolkit flow."
+
+------------------------------------------------------------
+SECTION B – Microsoft 365 Agents Toolkit Flow (Expanded)
+------------------------------------------------------------
+
+PREREQUISITES (ASSUMED TRUE)
+===========================
+You now have:
+- A Microsoft 365 tenant with Copilot enabled
+- Global Admin or Search Admin permissions
+- An Azure subscription
+- VS Code installed
+- Microsoft 365 Agents Toolkit extension installed in VS Code
+
+------------------------------------------------------------
+STEP 1 – Open the Project with Agents Toolkit
+------------------------------------------------------------
+
+1. Launch **Visual Studio Code**.
+2. Open your existing GitHub Issues Connector project folder.
+3. Confirm the Agents Toolkit is active:
+   - Look at the **left Activity Bar** in VS Code.
+   - You should see an icon labeled **"Teams Toolkit"** or **"Microsoft 365"**.
+4. Click that icon.
+
+If you do NOT see it:
+- Open Extensions
+- Search for "Microsoft 365 Agents Toolkit"
+- Install and reload VS Code
+
+------------------------------------------------------------
+STEP 2 – Run PROVISION (This is the big one)
+------------------------------------------------------------
+
+In the Agents Toolkit panel:
+
+1. Click **Provision**.
+2. VS Code will prompt you to sign in (once):
+   - Microsoft 365 account
+   - Azure account
+3. Confirm the subscription and tenant.
+
+Behind the scenes, Provision does ALL of this:
+------------------------------------------------
+- Creates an **Azure AD App Registration**
+- Registers your application for Microsoft Graph
+- Creates a **Microsoft Graph External Connection**
+- Assigns permissions such as:
+  - ExternalConnection.ReadWrite.OwnedBy
+  - ExternalItem.ReadWrite.OwnedBy
+- Populates environment variables
+- Writes configuration values to the Toolkit environment
+
+You do NOT manually create these in the portal.
+Provision is infrastructure setup.
+
+------------------------------------------------------------
+STEP 3 – Run DEPLOY (Code goes to Azure)
+------------------------------------------------------------
+
+After Provision completes:
+
+1. Click **Deploy** in the same Toolkit panel.
+2. Select the Azure Function target created during Provision.
+
+Deploy performs:
+-----------------
+- Builds your Azure Functions code
+- Deploys it to Azure
+- Uploads your schema (schema.json)
+- Uploads your connection metadata
+
+IMPORTANT:
+- This is where your local code becomes a real cloud-backed connector.
+
+------------------------------------------------------------
+STEP 4 – Run PUBLISH (If prompted)
+------------------------------------------------------------
+
+Some Learn modules include a **Publish** step.
+
+Publish:
+--------
+- Makes the connector visible to Microsoft 365 Search
+- Finalizes connector registration
+
+If Publish does NOT appear, that is OK.
+Not all exercises require it explicitly.
+
+------------------------------------------------------------
+STEP 5 – Trigger Indexing
+------------------------------------------------------------
+
+Once deployed:
+
+Option A – Manual trigger:
+- Call the deployed `deployConnection` function
+
+Option B – Automatic:
+- Timers now run in Azure
+- Full crawl / incremental crawl begins
+
+This is where data ingestion happens.
+
+------------------------------------------------------------
+STEP 6 – Verify in Microsoft 365 Admin Center
+------------------------------------------------------------
+
+1. Open **Microsoft 365 Admin Center**.
+2. Go to:
+   Search & intelligence → Search → Connectors
+3. Locate your connector by ID.
+4. Verify:
+   - Status is Active
+   - Items are being indexed
+
+At this point:
+- The data becomes searchable
+- Copilot can reference it
+
+------------------------------------------------------------
+HOW THIS DIFFERS FROM YOUR LOCAL SETUP
+------------------------------------------------------------
+
+Local VS Code:
+- Identity disabled
+- Graph client stubbed
+- Timers disabled
+- Used to validate code paths
+
+Toolkit + Azure:
+- Identity enabled
+- Real Graph External Connection
+- Timers active
+- Real indexing
+
+Same code. Different mode.
+
+------------------------------------------------------------
+Final Verdict
+------------------------------------------------------------
+
+✅ Your local project is already correctly structured.
+✅ The Agents Toolkit flow wraps provisioning and deployment cleanly.
+✅ You do NOT need Copilot Studio for this exercise.
+✅ Following these steps transitions your project exactly as Microsoft intended.
+
+This file exists to eliminate ambiguity about "what button do I click" and "what happens next."
+
+References
+==========
+- Microsoft Learn: Build your first Microsoft 365 Copilot connector
+- Microsoft 365 Agents Toolkit documentation
+- Microsoft Graph External Connectors documentation

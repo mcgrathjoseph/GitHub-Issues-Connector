@@ -1,0 +1,109 @@
+
+============================================
+AIToJoe Clarification – What to Browse for when Zip App Package prompts
+============================================
+
+Summary of Key Points
+=====================
+- When you click **Zip App Package**, the Toolkit asks you to select a **Teams manifest file**.
+- You should browse to the **existing Teams manifest.json** that lives in your project.
+- You are NOT supposed to pick schema.json, settings.json, or anything under dist/.
+
+------------------------------------------------------------
+What the Dialog Means
+------------------------------------------------------------
+
+The dialog title:
+
+  "Select Teams manifest.json File"
+
+is literal.
+
+The Toolkit cannot guess which manifest you want, so it asks you to point to it explicitly.
+
+------------------------------------------------------------
+What You Should Browse For (Correct Choice)
+------------------------------------------------------------
+
+Browse to:
+
+  appPackage/manifest.json
+
+OR (if appPackage does not yet exist):
+
+  manifest.json
+
+located at the **root folder created by the template** (not dist).
+
+In the GitHub Issues Connector sample, this file usually lives:
+
+  ./appPackage/manifest.json
+
+or, before first zip:
+
+  ./manifest.json
+
+------------------------------------------------------------
+What NOT to Select (Common Mistakes)
+------------------------------------------------------------
+
+Do NOT select:
+- schema.json
+- declarativeAgent.json
+- ai-plugin.json
+- apiSpecificationFile/*.yaml
+- settings.json
+- any file under dist/
+
+Those files are referenced BY the manifest, but they are not the manifest itself.
+
+------------------------------------------------------------
+Why This Prompt Appears at All
+------------------------------------------------------------
+
+The Agents Toolkit supports:
+- Multiple environments
+- Multiple manifests per project
+
+Rather than assume, it asks you to choose the Teams manifest explicitly.
+
+------------------------------------------------------------
+What Happens After You Pick the Correct manifest.json
+------------------------------------------------------------
+
+Once selected:
+- Toolkit reads the manifest
+- Gathers referenced files (OpenAPI, declarativeAgent, icons)
+- Creates:
+  - appPackage/
+  - appPackage/build/
+  - appPackage/build/appPackage.<env>.zip
+
+This is the expected end state.
+
+------------------------------------------------------------
+Quick Sanity Check After Zipping
+------------------------------------------------------------
+
+After Zip App Package completes, verify:
+- appPackage/build contains a .zip
+- The zip contains at its ROOT:
+  - manifest.json
+  - declarativeAgent.json
+  - icons/
+
+If yes, you are done.
+
+------------------------------------------------------------
+Final Verdict
+------------------------------------------------------------
+
+✅ Browse for **manifest.json**.
+✅ Do not browse for schema or dist files.
+✅ The prompt is expected and normal.
+✅ Selecting the correct manifest produces the appPackage zip.
+
+References
+==========
+- Microsoft 365 Agents Toolkit app packaging behavior
+- Teams app manifest packaging model

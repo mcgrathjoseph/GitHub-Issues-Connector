@@ -1,0 +1,68 @@
+AIToJoeReply--2026__Month04__Day26__Hour14__Min15__Sec00.txt
+
+Summary of Key Points
+=====================
+- GitHub repository names cannot contain spaces.
+- Local folders on Windows and in VS Code can contain spaces.
+- The non-clickable download link was due to a Copilot sandbox/UI rendering issue, not a file creation error.
+
+User Question
+=============
+"Can GitHub repositories have spaces in the name (e.g., 'GitHub Issues Connector')?"
+
+Answer
+======
+No. GitHub repository names cannot contain spaces.
+
+GitHub enforces repository names to be URL-safe, because the repository name becomes part of the URL:
+
+  https://github.com/<owner>/<repo-name>
+
+Spaces would break standard URL handling, so GitHub does not allow them at all.
+
+Valid examples:
+- github-issues-connector
+- github_issues_connector
+- GitHub-Issues-Connector
+
+Invalid example:
+- GitHub Issues Connector
+
+Local Folder vs GitHub Repository Name
+======================================
+It is important to distinguish between:
+
+1) Local folder name (Windows / VS Code)
+2) GitHub repository name (remote)
+
+You MAY have a local folder with spaces, such as:
+
+  P:\GitHub Issues Connector\
+
+This is perfectly valid on Windows and causes no problems in VS Code.
+
+However, when creating or pushing to GitHub, the repository itself must use a space-free name.
+
+It is common and acceptable for:
+- Local folder name ≠ GitHub repository name
+
+Git will map the local folder to the remote repository name automatically.
+
+Recommended Naming Practice
+===========================
+The most common and tool-friendly convention is to use hyphens:
+
+  github-issues-connector
+
+This avoids issues across operating systems, shells, URLs, and CI tools.
+
+Final Verdict
+=============
+✅ GitHub repositories: spaces NOT allowed
+✅ Local folders: spaces ARE allowed
+✅ Use hyphens or underscores for GitHub repository names
+
+References
+==========
+- GitHub repository naming rules
+- URL safety and encoding conventions

@@ -1,0 +1,131 @@
+
+============================================
+AIToJoe Answer – Which manifest.json to select (GitHub Connector sample)
+============================================
+
+Summary of Key Points
+=====================
+- In the **GitHub Issues Connector** Microsoft Learn sample, you should NOT select any manifest.json.
+- This project is a **Graph External Connector**, not a Teams / Copilot app package project.
+- The "Zip App Package" flow is **not applicable** for this connector sample when working locally.
+- The multiple manifest.json files you see are from dependencies or tooling and must NOT be used.
+
+------------------------------------------------------------
+User Question
+------------------------------------------------------------
+"This is my first click of Zip App Package in the GitHub connector MS sample project (local only, no Azure / tenant). Which manifest.json do I browse to?"
+
+------------------------------------------------------------
+What Your Screenshot Shows (Key Observation)
+------------------------------------------------------------
+
+Your search results correctly show:
+- manifest.json files under node_modules
+- manifest files related to tooling
+- aad.manifest.json
+- manifest.spfx.json
+
+Critically, there is **NO project-level Teams manifest.json** created by this GitHub connector sample.
+
+------------------------------------------------------------
+The Important Architecture Difference (Why This Is Happening)
+------------------------------------------------------------
+
+There are TWO different Microsoft sample types that look similar in VS Code:
+
+1) Teams / Copilot app samples
+   - Have appPackage/manifest.json
+   - Support "Zip App Package"
+   - Produce appPackage/build/*.zip
+
+2) Graph External Connector samples (your project)
+   - Do NOT define a Teams app
+   - Do NOT include appPackage/
+   - Do NOT produce Teams app packages
+   - Are deployed via Provision / Deploy (Azure + M365 Admin)
+
+The GitHub Issues Connector is type (2).
+
+------------------------------------------------------------
+Why Zip App Package Appears Anyway
+------------------------------------------------------------
+
+The Microsoft 365 Agents Toolkit UI is generic.
+It always shows:
+- Utility → Zip App Package
+
+It does NOT validate whether the current project actually contains a Teams manifest.
+
+So when you click it:
+- The Toolkit asks for a Teams manifest.json
+- Your project does not have one
+- The prompt leads to confusion
+
+This is expected behavior, not a mistake on your part.
+
+------------------------------------------------------------
+Which manifest.json SHOULD you pick?
+------------------------------------------------------------
+
+Answer:
+
+❌ NONE of them.
+
+Specifically do NOT select:
+- node_modules/**/manifest.json
+- aad.manifest.json
+- manifest.spfx.json
+- any manifest.json referenced by tooling or extensions
+
+Selecting any of these would create an invalid app package.
+
+------------------------------------------------------------
+Correct Next Steps for GitHub Connector Sample
+------------------------------------------------------------
+
+For this project, the correct flows are:
+
+Local learning (what you are doing now):
+- npm run build
+- func start (local Functions)
+- Validate code paths only
+
+Real usage (later, when prerequisites exist):
+- Lifecycle → Provision
+- Lifecycle → Deploy
+- Manage connector in Microsoft 365 Admin Center
+
+There is NO appPackage.zip step for this connector.
+
+------------------------------------------------------------
+Comparison to Restaurant (Copilot App) Sample
+------------------------------------------------------------
+
+Your earlier restaurant sample:
+- Was a Teams/Copilot app
+- Had manifest.json at project root
+- Required Zip App Package
+
+This GitHub connector sample:
+- Is NOT a Teams app
+- Is a backend connector
+- Has no Teams manifest
+- Skips app packaging entirely
+
+Both use the Toolkit, but they target different surfaces.
+
+------------------------------------------------------------
+Final Verdict (Very Clear)
+------------------------------------------------------------
+
+✅ You did not miss a file.
+✅ There is NO correct manifest.json to browse to.
+✅ Zip App Package should NOT be used for this project.
+✅ The prompt appears because the Toolkit UI is generic.
+
+This behavior is correct for the GitHub Issues Connector sample.
+
+References
+==========
+- Microsoft Graph External Connectors architecture
+- Microsoft Learn: Build your first Microsoft 365 Copilot Connector

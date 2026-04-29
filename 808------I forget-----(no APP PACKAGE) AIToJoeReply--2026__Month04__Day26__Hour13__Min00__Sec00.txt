@@ -1,0 +1,142 @@
+
+============================================
+AIToJoe Final Confirmation – Which manifest.json NOT to Browse To
+============================================
+
+Summary of Key Points
+=====================
+- Yes, your understanding is now 100% correct.
+- You should NOT browse to any of the manifest.json files listed below.
+- All of those manifest files belong to tooling or runtime infrastructure, not to your project.
+- The GitHub Issues Connector sample does not define a Teams/Copilot app manifest at all.
+
+------------------------------------------------------------
+User Question #1 (Verbatim)
+------------------------------------------------------------
+"So I would not browse to ie:
+
+P:\GitHub Issues Connector
+ode_modules\**\manifest.json
+
+or
+
+P:\GitHub Issues Connector\Tools_Joe_3unc_Joe_AzureFunctions_NoWorkersPlaceholder\workers\powershell\_manifest\manifest.json
+
+or
+
+P:\GitHub Issues Connector
+ode_moduleszure-functions-core-toolsin\workers\powershell\_manifest\manifest.json
+
+or
+
+P:\GitHub Issues Connector
+ode_moduleszure-functions-core-toolsin\in-proc8\workers\powershell\_manifest\manifest.json"
+
+------------------------------------------------------------
+Answer to User Question #1
+------------------------------------------------------------
+
+Correct — you should browse to NONE of those.
+
+Every path listed above must be ignored.
+
+------------------------------------------------------------
+Why Each of Those Files Is Wrong
+------------------------------------------------------------
+
+1) node_modules/**/manifest.json
+--------------------------------
+- These belong to third-party libraries or build tooling.
+- They are not Teams app manifests.
+- Selecting one would create an invalid app package.
+
+2) Tools_Joe_3/.../_manifest/manifest.json
+-------------------------------------------
+- This is a PowerShell worker runtime manifest.
+- It tells Azure Functions how to host PowerShell.
+- It has nothing to do with Teams or Copilot apps.
+
+3) azure-functions-core-tools/bin/workers/.../_manifest/manifest.json
+---------------------------------------------------------------------
+- This is an Azure Functions runtime manifest shipped by Microsoft.
+- It describes how language workers behave.
+- It is infrastructure-level metadata, not an app definition.
+
+4) azure-functions-core-tools/bin/in-proc8/workers/.../_manifest/manifest.json
+------------------------------------------------------------------------------
+- Same as above, but for in-proc hosting.
+- Entirely unrelated to Microsoft 365 app packaging.
+
+------------------------------------------------------------
+User Question #2 (Implicit but Critical)
+------------------------------------------------------------
+"Then which manifest.json should I browse to on first Zip App Package click for this GitHub connector sample?"
+
+------------------------------------------------------------
+Answer to User Question #2
+------------------------------------------------------------
+
+None.
+
+There is no correct manifest.json to select because:
+- This project is a Microsoft Graph External Connector.
+- It is NOT a Teams app.
+- It does NOT define a Teams or Copilot manifest.
+
+Therefore:
+- Zip App Package should NOT be used for this project.
+
+------------------------------------------------------------
+Architectural Truth (This Ends the Confusion)
+------------------------------------------------------------
+
+The Microsoft 365 Agents Toolkit UI combines multiple project types:
+
+- Teams / Copilot apps (require manifest.json and appPackage.zip)
+- Graph External Connectors (do NOT use app packaging)
+
+Your GitHub Issues Connector is the second type.
+
+The UI does not stop you from clicking Zip App Package, but the project itself does not support it.
+
+------------------------------------------------------------
+What You Did RIGHT
+------------------------------------------------------------
+
+- You searched for manifest.json instead of guessing.
+- You questioned whether node_modules manifests made sense.
+- You paused instead of selecting a random file.
+
+That instinct saved you from creating an invalid package.
+
+------------------------------------------------------------
+Correct Next Steps for This Project
+------------------------------------------------------------
+
+Local-only learning:
+- npm run build
+- func start
+- exercise connector logic locally
+
+Real usage (later, with tenant and Azure):
+- Lifecycle → Provision
+- Lifecycle → Deploy
+- Configure connector in Microsoft 365 Admin Center
+
+No appPackage.zip is involved in either path.
+
+------------------------------------------------------------
+Final Verdict (Very Explicit)
+------------------------------------------------------------
+
+✅ You should NOT browse to ANY of the listed manifest.json paths.
+✅ There is NO project-level Teams manifest.json in this repo.
+✅ Zip App Package is not applicable here.
+✅ Your understanding is now exactly correct.
+
+This file intentionally freezes this conclusion so you do not have to re-derive it later.
+
+References
+==========
+- Microsoft Graph External Connector architecture
+- Microsoft Learn: Build your first Microsoft 365 Copilot Connector

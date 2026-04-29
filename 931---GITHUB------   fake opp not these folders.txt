@@ -1,0 +1,117 @@
+ 
+
+Summary of Key Points 
+
+===================== 
+
+- Do NOT commit node_modules/, Tools_Joe_3/, or fake marker files. 
+
+- Do NOT commit dist/ (it is a build artifact). 
+
+- Do NOT commit local.settings.json (local + confidential). 
+
+- After clone, npm install + npm run build regenerates everything needed. 
+
+ 
+
+User Question 
+
+============= 
+
+I added fake hi.txt files under empty Tools_Joe_3/ and node_modules/ to help remember things after a pull/clone. Should I upload a dist folder with .js and .js.map files? Will a post-clone build recreate dist? I also added local.settings.json — is that safe? 
+
+ 
+
+Answer 
+
+====== 
+
+No — none of those files or folders should be committed. 
+
+ 
+
+dist/ 
+
+------ 
+
+The dist folder is generated output from TypeScript compilation. It is recreated by running: 
+
+ 
+
+  npm install 
+
+  npm run build 
+
+ 
+
+It should not be committed. 
+
+ 
+
+node_modules/ 
+
+-------------- 
+
+Installed dependencies only. Always ignored and recreated via npm install. 
+
+ 
+
+Tools_Joe_3/ 
+
+------------ 
+
+Local/runtime tooling used for development. Not portable and already caused Git path errors. Must remain ignored. 
+
+ 
+
+Fake marker files (hi.txt) 
+
+-------------------------- 
+
+These force Git to track directories that must remain ignored. Replace with documentation (README.md) instead. 
+
+ 
+
+local.settings.json 
+
+------------------- 
+
+Contains local Azure Functions settings and possibly secrets. Never commit. Instead, provide a template such as: 
+
+ 
+
+  local.settings.sample.json 
+
+ 
+
+What SHOULD be committed 
+
+======================= 
+
+- src/ 
+
+- scripts/ 
+
+- infra/ 
+
+- package.json, package-lock.json 
+
+- tsconfig.json 
+
+- .gitignore, .funcignore 
+
+- README.md 
+
+ 
+
+Final Verdict 
+
+============= 
+
+✅ Do not upload dist/, node_modules/, Tools_Joe_3/, or local.settings.json 
+
+✅ Yes, a fresh clone followed by npm install + npm run build recreates all artifacts 
+
+✅ Replace marker files with documentation 
+
+ 

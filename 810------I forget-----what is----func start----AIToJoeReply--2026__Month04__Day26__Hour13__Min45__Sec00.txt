@@ -1,0 +1,137 @@
+
+============================================================
+AIToJoe Clarification – Do I need to run func.exe after clicking Debug (Joe2)?
+============================================================
+
+Summary of Key Points
+=====================
+- No, you do NOT need to manually run func.exe if you clicked the Debug (Joe2) play button.
+- The Joe2 debug configuration already runs Azure Functions using a *portable* func.exe.
+- The error "func is not recognized" is expected when Azure Functions Core Tools is not on PATH.
+- Your setup is correct; you simply mixed TWO different ways of starting the Functions host.
+
+------------------------------------------------------------
+User Question (Verbatim)
+------------------------------------------------------------
+"I just clicked Debug play (Joe2 stuff). Do I need to run func.exe or something, given these screenshots and your earlier note that local learning uses 'func start'?"
+
+------------------------------------------------------------
+What the Screenshots Show
+------------------------------------------------------------
+
+From the terminal:
+
+  func start
+  → 'func' is not recognized as the name of a cmdlet
+
+  npm func start
+  → Unknown command: 'func'
+
+From VS Code:
+- You clicked the Joe2 Launch Azure Functions (Portable) debug configuration.
+
+------------------------------------------------------------
+The Key Concept (This Is the Entire Issue)
+------------------------------------------------------------
+
+There are TWO valid ways to start Azure Functions locally:
+
+1) Manual CLI method
+2) VS Code Debug method (Joe2)
+
+You only use ONE at a time.
+
+------------------------------------------------------------
+Method 1 — Manual CLI (NOT what you are using)
+------------------------------------------------------------
+
+This method requires:
+- Azure Functions Core Tools installed globally
+- func.exe available on PATH
+
+Command:
+
+  func start
+
+Your error occurs because:
+- Core Tools are NOT installed globally
+- func.exe is NOT on PATH
+
+This is normal and not a problem.
+
+------------------------------------------------------------
+Method 2 — VS Code Debug (Joe2) ✅ CORRECT
+------------------------------------------------------------
+
+This is what you are actually using.
+
+When you clicked:
+
+  ▶️ Joe2__Launch Azure Functions (Portable)
+
+VS Code automatically:
+- Locates a bundled (portable) func.exe
+- Launches the Functions host
+- Attaches the Node debugger
+
+You never see "func start" because:
+- VS Code runs it internally
+- PATH is irrelevant
+
+------------------------------------------------------------
+Why the Earlier Advice Said 'func start'
+------------------------------------------------------------
+
+The earlier guidance:
+
+  Local learning:
+  - npm run build
+  - func start
+
+was *conceptual*, not prescriptive.
+
+In your environment:
+- "func start" === "Click Joe2 Debug Play"
+
+They are equivalent outcomes, reached differently.
+
+------------------------------------------------------------
+What You Should Do Going Forward
+------------------------------------------------------------
+
+✅ OPTION A — Preferred (your current setup)
+- Use VS Code Debug → Joe2
+- Ignore manual func commands entirely
+
+❌ OPTION B — Not needed unless you want CLI-only workflow
+- Install Azure Functions Core Tools globally
+- Add func.exe to PATH
+
+Option B is NOT required.
+
+------------------------------------------------------------
+Correct Local Learning Flow (Final)
+------------------------------------------------------------
+
+1) npm run build
+2) VS Code → Debug → Joe2 (Play)
+3) Observe Functions running locally
+4) Test endpoints
+
+No separate func.exe command is needed.
+
+------------------------------------------------------------
+Final Verdict
+------------------------------------------------------------
+
+✅ You did nothing wrong.
+✅ The func-not-recognized error is expected in your setup.
+✅ Clicking Joe2 already runs func.exe for you.
+✅ Do NOT mix Debug and manual CLI methods.
+
+This file exists to permanently resolve the "do I need to run func.exe?" confusion.
+
+References
+==========
+- Azure Functions Core Tools local debug model
+- VS Code Azure Functions debugger behavior
