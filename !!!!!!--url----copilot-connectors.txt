@@ -1,0 +1,67 @@
+last one: those two projects in github ended here: 
+https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/7-summary#completion
+
+
+and lead to next one / connectors:
+https://learn.microsoft.com/en-us/training/modules/introduction-copilot-connectors/
+
+
+==========================
+k.. 
+github issues connector
+https://learn.microsoft.com/en-us/training/modules/build-your-first-microsoft-365-copilot-connector/2-exercise-create-connector-project?source=learn
+
+   k.. done cept for last property additions section (ie: label) she done ... what they say put in not fully match existing
+
+   https://learn.microsoft.com/en-us/training/modules/build-your-first-microsoft-365-copilot-connector/5-exercise-add-property
+   https://learn.microsoft.com/en-us/training/modules/build-your-first-microsoft-365-copilot-connector/5-exercise-add-property
+   https://learn.microsoft.com/en-us/training/modules/build-your-first-microsoft-365-copilot-connector/5-exercise-add-property
+
+   k.. and I not able to really run n test etc re my permissions etc
+
+	ie: only thing did in last url above was add a 
+		',OfficeDev/microsoft-365-agents-toolkit-samples' 
+	at end of:
+		# pre Joe: CONNECTOR_REPOS=org/repo-a,org/repo-b
+		CONNECTOR_REPOS=org/repo-a,org/repo-b,OfficeDev/microsoft-365-agents-toolkit-samples
+	in file
+		env/.env.local
+		env/.env.local
+		env/.env.local
+
+	and I never did ie this (add 'labels' section) ie:("name": "labels",) 
+	in above url since my file look bit diff from url sample:
+	  /src/references/schema.json
+	  /src/references/schema.json
+	  /src/references/schema.json
+		ask 1: Add labels property to the schema
+		Extend your connector's schema to include GitHub issue labels.
+		In your VS Code project, open /src/references/schema.json.
+		Locate the properties array in the schema definition.
+		Add a new property for labels after the existing properties:
+			etc			
+			etc
+		ie: my schema.json also has these sections up top
+			 "name": "title",
+			 "name": "owner",
+			 "name": "repo",
+
+	in above url this they say goal: (mine has ie:more, ie: those 3 above)
+		Your complete properties array should now include:
+
+				title
+				url
+				content
+				state
+				number
+				labels (new)
+
+	I just then look at ?~publish stuff to see if I can make an appPackage or ? just to see if compile etc
+	I just then look at ?~publish stuff to see if I can make an appPackage or ? just to see if compile etc
+	I just then look at ?~publish stuff to see if I can make an appPackage or ? just to see if compile etc
+		ie: 707-----fyi--------package hmm-----where is -----manifest.json----- few spots in old and new project.png
+		ie: 707-----fyi--------package hmm-----where is -----manifest.json----- few spots in old and new project.png
+
+it then say go to this training next one post exam pass:
+https://learn.microsoft.com/en-us/training/modules/monitor-maintain-microsoft-365-copilot-connectors/
+

@@ -1,0 +1,53 @@
+
+Terminal window error:  
+
+(prob since I node.js v18 or did some audit fix repair --force stuff to break it?)
+(prob since I node.js v18 or did some audit fix repair --force stuff to break it?)
+(prob since I node.js v18 or did some audit fix repair --force stuff to break it?)
+(prob since I node.js v18 or did some audit fix repair --force stuff to break it?)
+
+========
+error on joeplay   2 I think
+[2026-04-21T18:36:33.880Z] Worker was unable to load entry point "dist/src/functions/connections.js": 
+ClientSecretCredential: tenantId is a required parameter. 
+To troubleshoot, visit https://aka.ms/azsdk/js/identity/serviceprincipalauthentication/troubleshoot.[2026-04-21T18:36:33.886Z] Node.js v18 reached EOL on 2025-04. Please upgrade to a supported version: https://aka.ms/functions-nodejs-supported-versions
+
+
+
+================
+
+hmm this bing came up before I could click link properly...
+hmm may be worth searching bing for: 
+xxxxxxxxxxxxxxxxxxxxxhttps://www.bing.com/?ref=aka&shorturl=azsdk/js/identity/serviceprincipalauthentication/troubleshoot.[2026-04-21T18:36:33.886Z]
+k.. I got link from Terminal window to open:
+================================
+
+
+To troubleshoot, visit 
+xxxxxhttps://aka.ms/azsdk/js/identity/serviceprincipalauthentication/troubleshoot.[2026-04-21T18:36:33.886Z]
+
+
+To troubleshoot:
+
+https://aka.ms/azsdk/js/identity/serviceprincipalauthentication/troubleshoot
+
+auto lead to
+
+Troubleshoot service principal authentication issues
+https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/identity/identity/TROUBLESHOOTING.md#troubleshoot-service-principal-authentication-issues
+
+
+
+had sublink:
+Register a Microsoft Entra app and create a service principal
+https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in
+
+ Important
+
+Instead of creating a service principal, consider using managed identities for Azure resources for your application identity. If your code runs on a service that supports managed identities and accesses resources that support Microsoft Entra authentication, managed identities are a better option for you. To learn more about managed identities for Azure resources, including which services currently support it, see What is managed identities for Azure resources?.
+
+
+
+had sublink
+https://entra.microsoft.com/#home
+saw a flash of joemcgrath .. but then no access to this screen: "Microsoft Entra admin center"

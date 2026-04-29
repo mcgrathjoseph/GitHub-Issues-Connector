@@ -1,0 +1,29 @@
+Summary of Key Points
+- Node.js is a JavaScript runtime built on the V8 engine.
+- npm is a package manager that ships with Node.js.
+- `npm run` executes scripts defined in package.json.
+
+User Question:
+"sorry I forgot the difference between ie: node v18 and ie: npm (ie: npm run)....node is a javascript engine and npm is from where?"
+
+Full Reply:
+Node.js (for example, Node v18) is **not just an engine**. It is a JavaScript *runtime* that lets JavaScript run outside the browser. Under the hood it uses Google’s **V8 JavaScript engine**, plus Node-specific libraries for things like files, networking, and processes.
+
+npm (**Node Package Manager**) originally stood for exactly that. It is a **package manager and command‑line tool** created specifically for the Node.js ecosystem. npm comes bundled *with* Node.js installations.
+
+Where they come from:
+- **V8** → Google (Chrome)
+- **Node.js** → Originally Ryan Dahl, now governed by the OpenJS Foundation
+- **npm** → Originally an independent project, now maintained by npm, Inc. (owned by GitHub/Microsoft)
+
+What `npm run` means:
+- `npm run <script>` runs commands you define in `package.json`.
+- npm does *not* execute JavaScript itself; it calls Node.js to do that.
+
+Simple mental model:
+- Node.js = the runtime that executes JavaScript
+- npm = the tool that installs packages and runs project scripts using Node
+
+References:
+- Node.js documentation: https://nodejs.org/en/docs
+- npm documentation: https://docs.npmjs.com
