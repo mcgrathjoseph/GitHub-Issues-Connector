@@ -1,0 +1,53 @@
+Summary of Key Points:
+- Copilot Studio can do MANY things but not everything the Agents SDK can.
+- Copilot Studio excels at orchestration, connectors, and rapid agent creation.
+- Agents SDK enables deeper control, custom logic, and complex architectures.
+- They overlap but are not equivalent in capability.
+
+User Question:
+if this is true: Copilot Studio = Power Apps for agents, Agents SDK = Visual Studio for agents — can someone using only Copilot Studio do most everything someone using the Agents SDK can?
+
+Full Response:
+Short answer: They can do a lot—but NOT most everything.
+
+More precise answer (important at your level):
+Copilot Studio covers roughly 60–80% of common enterprise agent scenarios, especially:
+- Q&A agents
+- Workflow automation
+- Connector-based integrations
+- Light orchestration and responses
+
+Where Copilot Studio is strong:
+- Rapid development (minutes/hours)
+- 1000+ connectors (Power Platform)
+- Built-in orchestration and grounding
+- Easy deployment within Microsoft environments
+
+Where it falls short vs Agents SDK:
+- Deep custom logic and control flow
+- Multi-agent coordination logic you fully control
+- Custom memory/state management
+- Complex tool chaining and reasoning pipelines
+- Custom hosting/runtime control
+- Integration with non-standard systems at low level
+
+Where Agents SDK is required:
+- Advanced enterprise architectures
+- Highly customised AI behaviour
+- Performance-sensitive or scaled systems
+- Complex orchestration beyond what flows/skills allow
+
+Better mental model:
+- Copilot Studio = 80% solution, fast
+- Agents SDK = 100% control, slower but more powerful
+
+Critical insight (this is the real answer):
+Most organizations will use BOTH:
+- Copilot Studio as the front-end/orchestrator
+- Agents SDK for specialised capabilities behind the scenes
+
+Self-critical note:
+It would be misleading to say Copilot Studio can replace SDK usage. It can replace it for simple/medium scenarios, but not for advanced engineering cases.
+
+References:
+- No external sources used

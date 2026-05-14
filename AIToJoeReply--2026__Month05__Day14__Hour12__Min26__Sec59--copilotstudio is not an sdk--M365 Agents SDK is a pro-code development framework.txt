@@ -1,0 +1,39 @@
+Summary of Key Points:
+- Copilot Studio is NOT an SDK; it is a low-code/no-code platform.
+- Microsoft 365 Agents SDK is a separate pro-code framework.
+- Agents SDK is newer (replacing Bot Framework), not an old name for Copilot Studio.
+- The confusion comes from naming convergence around “agents”.
+
+User Question:
+but as per pic, it looks like copilotstudio is a type of sdk for agents
+maybe 'Microsoft 365 Agents SDK' is an old name or older tool replaced by pic? Think you said that in past
+
+Full Response:
+Short answer: No — Copilot Studio is not a type of SDK, and Microsoft 365 Agents SDK is not an old name for it.
+
+What your screenshot shows is the Copilot Studio UI. This is a low-code/no-code platform built on the Power Platform where agents are created, stored, and managed inside environments. It looks “developer-like” because it deals with agents, but it is not a software development kit.
+
+The Microsoft 365 Agents SDK is a separate, newer pro-code framework used to build agents in code (C#, JavaScript, Python). These agents are typically hosted in Azure or another environment and can expose functionality.
+
+The key relationship:
+- Copilot Studio = visual builder and orchestrator
+- Agents SDK = code-based agent development framework
+- Skills = integration mechanism between them
+
+Important clarification:
+- Copilot Studio was formerly Power Virtual Agents (renamed, not replaced)
+- Microsoft 365 Agents SDK is the evolution/replacement of Bot Framework
+
+So:
+- Agents SDK did NOT replace Copilot Studio
+- Copilot Studio did NOT become the SDK
+- They are parallel tools in the same ecosystem
+
+Why it feels confusing:
+Microsoft unified everything under the “agent” concept, so both tools now use similar terminology and appear in the same documentation flows.
+
+Self-critical note:
+Earlier explanations may have implied that the Agents SDK broadly replaced older tooling in a way that included Copilot Studio. The precise and correct statement is: the Agents SDK replaces Bot Framework, not Copilot Studio.
+
+References:
+- No external sources used

@@ -1,0 +1,54 @@
+Summary of Key Points:
+- Your VS Code screenshots point to Microsoft 365 Agents Toolkit and MCP tooling, not Copilot Studio.
+- m365agents.local.yml is a hallmark of an Agents Toolkit project.
+- mcp.json is MCP configuration used by GitHub Copilot/VS Code tooling and can coexist with Agents Toolkit.
+- This does not automatically mean the project is an Agents SDK custom-engine agent; 
+it may instead be a declarative agent, connector, plugin, or Teams/M365 app scaffolded by the toolkit.
+
+User Question:
+..as per pics, then how does this vscode fit in to the picture. This folder lets one play with mcp.json, 
+lets one build typescript ms sample projects (ie: github issues connector on ms learn) 
+.. even has a tab called m365agents.local.yml.... 
+are these pics MS Agents SDK? I know it is not copilotstudio.com
+
+Full Response:
+Short answer: the screenshots are most likely showing the Microsoft 365 Agents Toolkit in VS Code, plus MCP tooling. 
+They are related to the Microsoft 365 Agents ecosystem, but they are not automatically the same thing as “an Agents SDK project”.
+
+What the screenshots suggest:
+1) The file m365agents.local.yml strongly indicates a Microsoft 365 Agents Toolkit project. 
+Microsoft documents m365agents.yml as the main Agents Toolkit project file and m365agents.local.yml as the local override used for local execution/debugging.
+2) The mcp.json file indicates Model Context Protocol server configuration in VS Code / GitHub Copilot Agent mode. 
+Microsoft also documents using .vscode/mcp.json together with the Microsoft 365 Agents Toolkit MCP Server and MCP-based Copilot extensibility workflows.
+3) Therefore, your VS Code setup fits on the “developer/pro-code side” of the picture, not the Copilot Studio web UI side.
+
+Important nuance:
+- Agents Toolkit is a developer toolchain / extension / deployment helper.
+- Agents SDK is the runtime/framework you code against when building custom engine agents.
+- An Agents Toolkit project can scaffold or manage several things: Teams apps, declarative agents, plugins, connectors, and also some Agents SDK-based projects.
+
+So are your screenshots “MS Agents SDK”?
+- Maybe partly, but not necessarily.
+- They are definitely in the Microsoft 365 Agents Toolkit world.
+- They are only an Agents SDK project if the sample/template itself is built on the Microsoft 365 Agents SDK runtime.
+
+For your specific GitHub Issues Connector example:
+Microsoft’s sample describes a broader solution that combines a Graph connector, webhook/Azure Function, declarative agent, and API plugin. 
+That kind of project can be created and managed through toolkit files like m365agents.local.yml without being a pure custom-engine Agents SDK bot.
+
+Best mental model:
+- Copilot Studio = browser UI builder/orchestrator
+- Agents Toolkit in VS Code = developer scaffolding/provisioning/debugging/deployment layer
+- Agents SDK = code framework/runtime for custom agents
+- MCP = a protocol/tooling bridge that VS Code/GitHub Copilot can use to work with agent/dev tools and MCP-exposed services
+
+Bottom line:
+Your screenshots are best described as:
+“Microsoft 365 Agents Toolkit + MCP tooling in VS Code”.
+That sits beside Copilot Studio, and can support Agents SDK projects, but is not identical to Copilot Studio and not automatically identical to the Agents SDK itself.
+
+References:
+- Microsoft Learn: Microsoft 365 Agents Toolkit
+- Microsoft Learn: Microsoft 365 Agents SDK documentation
+- Microsoft Learn: Build plugins from an MCP server for Microsoft 365 Copilot
+- Microsoft Learn: GitHub Issue Manager sample agent
