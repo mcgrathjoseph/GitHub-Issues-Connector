@@ -1,0 +1,20 @@
+
+Summary of Key Points:
+- 'React component' refers to a standard React UI unit, not a PCF control
+- App.tsx in a Vite project is a React component that renders UI
+- Web Resource = compiled output (HTML/JS/CSS) of React app
+- PCF control is a different concept involving Power Apps component framework
+
+User Question:
+why does it say React component — is that PCF or web resource?
+
+Full Reply Context:
+The term 'React component' is a generic React concept and does not mean PCF. 
+In this case, App.tsx is simply a React component within a Vite project. 
+When built, it becomes a Web Resource (JavaScript/HTML files) uploaded into Power Apps. 
+A PCF component is different and involves a special framework, manifest, and lifecycle. 
+Your implementation is a standard React component compiled into a Web Resource.
+
+References:
+- React documentation (components)
+- Power Apps PCF vs Web Resource guidance
